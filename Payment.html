@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - P2K</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .form-box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="number"], input[type="submit"] {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pembayaran - P2K</h1>
+</header>
+
+<div class="container">
+    <!-- Form Pembayaran -->
+    <div class="form-box">
+        <h2>Form Pembayaran</h2>
+        <form id="payment-form">
+            <label for="btc-address">Alamat Bitcoin:</label><br>
+            <input type="text" id="btc-address" placeholder="Masukkan Alamat Bitcoin" required><br>
+
+            <label for="amount">Jumlah BTC:</label><br>
+            <input type="number" id="amount" placeholder="Jumlah BTC" required><br>
+
+            <input type="submit" value="Kirim Pembayaran">
+        </form>
+    </div>
+
+    <!-- Konfirmasi Pembayaran -->
+    <div class="form-box" id="payment-confirmation" style="display:none;">
+        <h2>Pembayaran Berhasil</h2>
+        <p>Terima kasih! Pembayaran Anda telah berhasil diproses. Kode akses VIP akan dikirimkan kepada Anda segera.</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const btcAmount = document.getElementById('amount').value;
+        const btcAddress = document.getElementById('btc-address').value;
+
+        if (btcAmount == 9 && btcAddress) {
+            alert('Pembayaran berhasil! Kode VIP akan dikirimkan segera.');
+            document.getElementById('payment-confirmation').style.display = 'block'; // Menampilkan konfirmasi pembayaran
+        } else {
+            alert('Pembayaran gagal. Pastikan jumlah BTC benar dan alamat Bitcoin valid.');
+        }
+    });
+</script>
+
+</body>
+</html>
